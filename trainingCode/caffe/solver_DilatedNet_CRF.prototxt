@@ -1,0 +1,23 @@
+# TOOLS=../../caffe/build/tools
+# WEIGHTS=TVG_CRFRNN_COCO_VOC.caffemodel
+# Net=TVG_CRFRNN_new_solver.prototxt
+
+# $TOOLS/caffe train -solver $Net -weights $WEIGHTS -gpu 0
+
+
+net: "train_DilatedNet_CRF.prototxt"
+test_initialization: false
+test_iter: 10
+test_interval: 10000
+test_compute_loss: true
+base_lr: 1e-2
+lr_policy: "step"
+gamma: 0.1
+stepsize: 100000
+display: 10
+momentum: 0.9
+max_iter: 200000
+weight_decay: 0.0005
+snapshot: 3000
+snapshot_prefix: "snapshot/dilatedNet_CRF"
+solver_mode: GPU
